@@ -1,0 +1,17 @@
+// This file is a template. Please create a file named ".account.json" (consider
+// the mandatory `.` at the beginning) and change the values of "account" and "client"
+// according to your settings (https://app.developer.viessmann.com/).
+{
+	"account": {
+		"name": "nickname@domain.tld",
+		"password": "password"
+	},
+	"client": {
+		"id": "[0-9a-f]{32}",
+		"uri": "http://host:port/"
+	},
+	"authorization": {
+		"challenge": "2e21faa1-db2c-4d0b-a10f-575fd372bc8c-575fd372bc8c",
+		"verifier": "2e21faa1-db2c-4d0b-a10f-575fd372bc8c-575fd372bc8c"
+	}
+}
