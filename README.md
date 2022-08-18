@@ -3,7 +3,8 @@ Access the Viessmann Web API (aka ViCare)
 
 ## Usage
 
-1. Copy `account.json` to `.account.json` and change the content as advised by the comment.
+1. Copy `account.json` to `.account.json` and change the the values of "_account_" and "_client_"
+   according to your settings (https://app.developer.viessmann.com/).
 2. Execute `./login.sh` to obtain the authorization token.
 3. The token is stored within .token.json
 

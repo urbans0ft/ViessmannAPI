@@ -1,6 +1,3 @@
-// This file is a template. Please create a file named ".account.json" (consider
-// the mandatory `.` at the beginning) and change the values of "account" and "client"
-// according to your settings (https://app.developer.viessmann.com/).
 {
 	"account": {
 		"name": "nickname@domain.tld",
