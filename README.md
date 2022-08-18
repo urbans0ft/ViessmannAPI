@@ -15,3 +15,7 @@ Access the Viessmann Web API (aka ViCare)
       "expires_in": 3600
     }
     ```
+
+## References
+
+-  [Viessmann API Documentation](https://documentation.viessmann.com/static/getting-started)
