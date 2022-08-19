@@ -86,7 +86,7 @@ clientId=$(cat .account.json | jq --raw-output '.client.id')
 redirectUri=$(cat .account.json | jq --raw-output '.client.uri')
 
 # if token is already present load it
-if [[ -f $ACCOUNT_JSON_FILE ]]; then
+if [[ -f $TOKEN_JSON_FILE ]]; then
     access_token=$(cat .token.json | jq -r '.access_token')
     refresh_token=$(cat .token.json | jq -r '.refresh_token')
 fi
