@@ -15,8 +15,13 @@
 #clientId=$(cat .account.json | jq --raw-output '.client.id')
 #refreshToken=$(cat $tokenJsonFile | jq --raw-output '.refresh_token')
 #
-echo $clientId
-echo $refresh_token
+
+
+if [[ -z $refresh_token ]]; then
+	error "No 'refresh_token' available. Maybe you forgot to login?"
+	echo "Try: ./api.sh --login"
+	exit 1
+fi
 
 curl -X POST "https://iam.viessmann.com/idp/v2/token" \
 -H "Content-Type: application/x-www-form-urlencoded" \
