@@ -96,6 +96,7 @@ LONGOPTIONS=get:,help,login,me,refresh,version
 #echo -en "${RED}"
 PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTIONS --name "$0" -- "$@" 2> >(sed $'s,.*,\e[1;31m&\e[m,'>&2))
 if [[ $? -ne 0 ]]; then
+
   printHelp
   exit 2
 fi
@@ -119,8 +120,7 @@ while true; do
             exit 0
             ;;
         -m|--me)
-            curl -s -X GET "https://api.viessmann.com/users/v1/users/me?sections=identity" \
-            -H "Authorization: Bearer $access_token"
+            source ./me.sh
             exit 0
             ;;
         -r|--refresh)
