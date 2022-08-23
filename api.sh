@@ -13,6 +13,7 @@ COPYRIGHT="urbanSoft 2022"
 
 ACCOUNT_JSON_FILE=".account.json"
 TOKEN_JSON_FILE=".token.json"
+SETTING_JSON_FILE=".setting.json"
 
 # ############################################################################ #
 #                              F U N C T I O N S                               #
@@ -91,8 +92,8 @@ if [[ $? -ne 4 ]]; then
     exit 1
 fi
 
-OPTIONS=g:hlmrV
-LONGOPTIONS=get:,help,login,me,refresh,version
+OPTIONS=dg:hlmrV
+LONGOPTIONS=discover,get:,help,login,me,refresh,version
 #echo -en "${RED}"
 PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTIONS --name "$0" -- "$@" 2> >(sed $'s,.*,\e[1;31m&\e[m,'>&2))
 if [[ $? -ne 0 ]]; then
@@ -107,6 +108,10 @@ eval set -- "$PARSED"
 # now enjoy the options in order and nicely split until we see --
 while true; do
     case "$1" in
+        -d|--discover)
+            source ./discover.sh
+            exit 0
+            ;;
         -g|--get)
             source ./get.sh $2
             #shift 2
@@ -118,6 +123,9 @@ while true; do
             ;;
         -l|--login)
             source ./login.sh
+            if [[ ! -f $SETTING_JSON_FILE ]]; then
+              source ./discover.sh
+            fi
             exit 0
             ;;
         -m|--me)
