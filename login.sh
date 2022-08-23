@@ -1,12 +1,5 @@
 #!/bin/bash
 
-accountJsonFile=".account.json"
-
-if [[ ! -f $accountJsonFile ]]; then
-    echo "File '$accountJsonFile' is missing."
-    exit 1
-fi
-
 acccountName=$(cat .account.json | jq --raw-output '.account.name')
 accountPassword=$(cat .account.json | jq --raw-output '.account.password')
 

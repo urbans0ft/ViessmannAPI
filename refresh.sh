@@ -16,6 +16,10 @@
 #refreshToken=$(cat $tokenJsonFile | jq --raw-output '.refresh_token')
 #
 
+# if token is present load it
+if [[ -f $TOKEN_JSON_FILE ]]; then
+    refresh_token=$(cat .token.json | jq -r '.refresh_token')
+fi
 
 if [[ -z $refresh_token ]]; then
 	error "No 'refresh_token' available. Maybe you forgot to login?"

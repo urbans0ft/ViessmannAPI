@@ -79,16 +79,9 @@ if [[ ! -f $ACCOUNT_JSON_FILE ]]; then
     exit 1
 fi
 
-acccountName=$(cat .account.json | jq --raw-output '.account.name')
-accountPassword=$(cat .account.json | jq --raw-output '.account.password')
-
-clientId=$(cat .account.json | jq --raw-output '.client.id')
-redirectUri=$(cat .account.json | jq --raw-output '.client.uri')
-
 # if token is already present load it
 if [[ -f $TOKEN_JSON_FILE ]]; then
     access_token=$(cat .token.json | jq -r '.access_token')
-    refresh_token=$(cat .token.json | jq -r '.refresh_token')
 fi
 
 # Check if getopt is available
@@ -124,7 +117,7 @@ while true; do
             exit 0
             ;;
         -l|--login)
-            ./login.sh
+            source ./login.sh
             exit 0
             ;;
         -m|--me)
