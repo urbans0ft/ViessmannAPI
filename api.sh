@@ -93,14 +93,12 @@ fi
 
 OPTIONS=g:hlmrV
 LONGOPTIONS=get:,help,login,me,refresh,version
-echo -en "${RED}"
-PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTIONS --name "$0" -- "$@")
+#echo -en "${RED}"
+PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTIONS --name "$0" -- "$@" 2> >(sed $'s,.*,\e[1;31m&\e[m,'>&2))
 if [[ $? -ne 0 ]]; then
-  echo -e  "${NC}"
   printHelp
   exit 2
 fi
-echo -en  "${NC}"
 
 # read getopt’s output this way to handle the quoting right:
 eval set -- "$PARSED"
