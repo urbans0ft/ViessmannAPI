@@ -108,8 +108,9 @@ eval set -- "$PARSED"
 while true; do
     case "$1" in
         -g|--get)
-            action=$2
-            shift 2
+            source ./get.sh $2
+            #shift 2
+            exit 0
             ;;
         -h|--help)
             printHelp
@@ -141,12 +142,3 @@ while true; do
             ;;
     esac
 done
-
-if [[ "$action" == "" ]]; then
-  warn "Error: No parameters supplied!"
-  echo
-  printHelp
-  exit 1
-fi
-
-echo "Doing action with $action."
