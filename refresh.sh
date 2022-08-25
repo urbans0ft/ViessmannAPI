@@ -27,6 +27,8 @@ if [[ -z $refresh_token ]]; then
 	exit 1
 fi
 
+clientId=$(cat .account.json | jq --raw-output '.client.id')
+
 curl -X POST "https://iam.viessmann.com/idp/v2/token" \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -d "grant_type=refresh_token&client_id=$clientId" \
