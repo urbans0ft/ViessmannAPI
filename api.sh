@@ -8,7 +8,7 @@ RED='\033[1;31m'
 NC='\033[0m' # No Color
 
 NAME="$0"
-VERSION="1.0"
+VERSION="1.1"
 COPYRIGHT="urbanSoft 2022"
 
 ACCOUNT_JSON_FILE=".account.json"
@@ -26,10 +26,17 @@ SETTING_JSON_FILE=".setting.json"
 # ############################################################################ #
 function printHelp()
 {
-  echo "Usage: $NAME [-a <param>|-h|-V]"
-  echo "  -a|--action  <param> Do an action with a parameter."
-  echo "  -h|--help    Print this help."
-  echo "  -V|--version Print version info."
+# OPTIONS=dg:hlmrV
+# LONGOPTIONS=discover,get:,help,login,me,refresh,version
+  echo "Usage: $NAME [-d|-g <path>|-h|-l|-m|-r|-V]"
+  echo ""
+  echo "  -d|--discover   query installation, gateway and devide id from the api (stored in .setting.json)."
+  echo "  -g|--get <path> query a get request."
+  echo "  -h|--help       Print this help."
+  echo "  -l|--login      use .account.json to login and retrieve an api token (.token.json)."
+  echo "  -m|--me         query installation owner information."
+  echo "  -r|--refresh    refresh api token after expiration."
+  echo "  -V|--version    Print version info."
 }
 
 # ############################################################################ #
@@ -150,3 +157,6 @@ while true; do
             ;;
     esac
 done
+
+warn "No parameter supplied!"
+printHelp
