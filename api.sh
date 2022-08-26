@@ -99,8 +99,8 @@ if [[ $? -ne 4 ]]; then
     exit 1
 fi
 
-OPTIONS=dg:hlmrV
-LONGOPTIONS=discover,get:,help,login,me,refresh,version
+OPTIONS=c:df:g:hlmp:rV
+LONGOPTIONS=command:,discover,feature:,get:,help,login,me,parameter:,refresh,version
 #echo -en "${RED}"
 PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTIONS --name "$0" -- "$@" 2> >(sed $'s,.*,\e[1;31m&\e[m,'>&2))
 if [[ $? -ne 0 ]]; then
@@ -115,9 +115,17 @@ eval set -- "$PARSED"
 # now enjoy the options in order and nicely split until we see --
 while true; do
     case "$1" in
+        -c|--command)
+            command=$2
+            shift 2
+            ;;
         -d|--discover)
             source ./discover.sh
             exit 0
+            ;;
+        -f|--feature)
+            feature=$2
+            shift 2
             ;;
         -g|--get)
             source ./get.sh $2
@@ -138,6 +146,10 @@ while true; do
         -m|--me)
             source ./me.sh
             exit 0
+            ;;
+        -p|--parameter)
+            parameter=$2
+            shift 2
             ;;
         -r|--refresh)
             source ./refresh.sh
