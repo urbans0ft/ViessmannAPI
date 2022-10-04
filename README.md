@@ -46,3 +46,12 @@ The discoverd setting is stored within `.setting.json`.
 ## References
 
 -  [Viessmann API Documentation](https://documentation.viessmann.com/static/getting-started)
+
+## Development
+
+### jq
+
+```
+cat .deleteMe | jq '.data[] | {feature: .feature, commands: .commands} | select(.commands | length > 0) | {feature: .feature, commands: .commands | to_entries} | {feature: .feature, commands: [.commands[].key]}'
+
+```

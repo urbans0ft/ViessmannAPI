@@ -170,5 +170,15 @@ while true; do
     esac
 done
 
-warn "No parameter supplied!"
+if [[ -n $feature ]] && [[ -n $command ]] && [[ -n $parameter ]]; then
+	echo "Inoking $command with value $parameter on $feature."
+	exit 0
+fi
+
+if [[ -n $feature ]] && [[ -z $command ]] && [[ -z $parameter ]]; then
+	echo "Getting $feature."
+	exit 0
+fi
+
+warn "Usage error!"
 printHelp

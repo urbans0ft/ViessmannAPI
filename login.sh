@@ -43,3 +43,4 @@ curl $tokenUrl \
     --data "grant_type=authorization_code" \
     --data "code_verifier=$codeVerifier" \
     --data "code=$authorizationCode" >.token.json
+
