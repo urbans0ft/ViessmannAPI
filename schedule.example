@@ -1,0 +1,60 @@
+{
+  "newSchedule": {
+    "mon": [
+      {
+        "start": "05:40",
+        "end": "23:00",
+        "mode": "5/10-cycles",
+        "position": 0
+      }
+    ],
+    "tue": [
+      {
+        "start": "05:40",
+        "end": "23:00",
+        "mode": "5/10-cycles",
+        "position": 0
+      }
+    ],
+    "wed": [
+      {
+        "start": "05:40",
+        "end": "23:00",
+        "mode": "5/10-cycles",
+        "position": 0
+      }
+    ],
+    "thu": [
+      {
+        "start": "05:40",
+        "end": "23:00",
+        "mode": "5/10-cycles",
+        "position": 0
+      }
+    ],
+    "fri": [
+      {
+        "start": "05:40",
+        "end": "23:00",
+        "mode": "5/10-cycles",
+        "position": 0
+      }
+    ],
+    "sat": [
+      {
+        "start": "05:40",
+        "end": "23:00",
+        "mode": "5/10-cycles",
+        "position": 0
+      }
+    ],
+    "sun": [
+      {
+        "start": "05:40",
+        "end": "23:00",
+        "mode": "5/10-cycles",
+        "position": 0
+      }
+    ]
+  }
+}
