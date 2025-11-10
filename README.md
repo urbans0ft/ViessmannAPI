@@ -46,7 +46,7 @@ The discoverd setting is stored within `.setting.json`.
 
 ## References
 
--  [Viessmann API Documentation](https://documentation.viessmann.com/static/getting-started)
+-  [Viessmann API Documentation](https://api.viessmann-climatesolutions.com/documentation)
 
 ## Development
 
