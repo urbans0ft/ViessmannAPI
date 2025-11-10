@@ -11,7 +11,8 @@ The following commands must be available:
 
 ## Configuration
 
-Copy `account.json` to `.account.json` and change the the values of "_account_" and "_client_" according to your settings (https://app.developer.viessmann.com/).
+Copy `account.json` to `.account.json` and change the the values of "_account_" and "_client_"
+according to your settings (https://app.developer.viessmann-climatesolutions.com/).
 
 ## Usage
 
@@ -45,7 +46,7 @@ The discoverd setting is stored within `.setting.json`.
 
 ## References
 
--  [Viessmann API Documentation](https://documentation.viessmann.com/static/getting-started)
+-  [Viessmann API Documentation](https://api.viessmann-climatesolutions.com/documentation)
 
 ## Development
 

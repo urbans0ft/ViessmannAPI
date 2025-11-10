@@ -13,7 +13,7 @@ codeChallenge=$(cat .account.json | jq --raw-output '.authorization.challenge')
 codeVerifier=$(cat .account.json | jq --raw-output '.authorization.verifier')
 
 authorizationScheme='https'
-authorizationServer='iam.viessmann.com'
+authorizationServer='iam.viessmann-climatesolutions.com'
 authorizationPath='/idp/v2/authorize'
 authorizationQuery="client_id=$clientId"
 authorizationQuery+="&redirect_uri=$redirectUri"

@@ -30,7 +30,7 @@ function printHelp()
 # LONGOPTIONS=discover,get:,help,login,me,refresh,version
   echo "Usage: $NAME [-d|-g <path>|-h|-l|-m|-r|-V]"
   echo ""
-  echo "  -d|--discover   query installation, gateway and devide id from the api (stored in .setting.json)."
+  echo "  -d|--discover   query installation, gateway and device id from the api (stored in .setting.json)."
   echo "  -g|--get <path> query a get request."
   echo "  -h|--help       Print this help."
   echo "  -l|--login      use .account.json to login and retrieve an api token (.token.json)."
