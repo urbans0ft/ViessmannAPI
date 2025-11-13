@@ -2,6 +2,8 @@
 $script:ViessmannConfigPath = Join-Path -Path $env:USERPROFILE '.ViessmanPs' 'config.json'
 $script:ViessmannOauthPath  = Join-Path -Path $env:USERPROFILE '.ViessmanPs' 'oauth.json'
 
+New-Variable -Name VIESSMANN_API_SERVER -Value 'https://api.viessmann-climatesolutions.com' -Scope Script -Option Constant
+
 $script:ViessmannConfigTemplate = [PSCustomObject]@{
     "account" = [PSCustomObject]@{
         "name"     = $null
