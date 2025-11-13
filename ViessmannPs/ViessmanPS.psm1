@@ -36,6 +36,12 @@ ForEach-Object {
     . $_.FullName
 }
 
+# Export all functions from public functions folder
+Get-ChildItem -Path (Join-Path $PSScriptRoot 'Functions\Public') -Filter '*.ps1' -Recurse |
+ForEach-Object {
+    $functionName = [System.IO.Path]::GetFileNameWithoutExtension($_.Name)
+    Export-ModuleMember -Function $functionName
+}
 
 
 
