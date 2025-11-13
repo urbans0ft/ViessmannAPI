@@ -1,3 +1,6 @@
+# Simply stop on errors
+$ErrorActionPreference = 'Stop'
+
 # Module-scoped variable - accessible to all functions within the module but not externally
 $script:ViessmannConfigPath = Join-Path -Path $env:USERPROFILE '.ViessmanPs' 'config.json'
 $script:ViessmannOauthPath  = Join-Path -Path $env:USERPROFILE '.ViessmanPs' 'oauth.json'
