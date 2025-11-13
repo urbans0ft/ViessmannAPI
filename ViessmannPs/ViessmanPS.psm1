@@ -1,7 +1,60 @@
 function Connect-Viessmann {
-    
-    [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'None')]
-    param ()
+    <#
+    .SYNOPSIS
+        
+    .DESCRIPTION
+        
+    .NOTES
+        
+    .LINK
+        
+    .EXAMPLE
+        Connect-Viessmann
+    .EXAMPLE
+        Connect-Viessmann `
+          -Credential (Get-Credential -Message "Viesmann Developer Portal Login") `
+          -ClientId 'aebc6f7fb5e546628395e57a85211e00' `
+          -RedirectUri 'http://localhost:4200/'
+    .EXAMPLE
+        Connect-Viessmann `
+          -UserName "my-login@mail.com" `
+          -ClientId 'aebc6f7fb5e546628395e57a85211e00' `
+          -RedirectUri 'http://localhost:4200/'
+    .EXAMPLE
+        Connect-Viessmann `
+            -UserName "my-login@mail.com" `
+            -SecurePassword (Read-Host "Password" -AsSecureString) `
+            -ClientId 'aebc6f7fb5e546628395e57a85211e00' `
+            -RedirectUri 'http://localhost:4200/'
+    #>
+    [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'None', DefaultParameterSetName = 'Default')]
+    param (
+        [Parameter(ParameterSetName = 'Credential', Mandatory)]
+        [pscredential]$Credential,
+        [Parameter(ParameterSetName = 'Login', Mandatory)]
+        [string]$UserName,
+        [Parameter(ParameterSetName = 'Login', Mandatory)]
+        [securestring]$SecurePassword,
+        [Parameter(ParameterSetName = 'Login', Mandatory)]
+        [Parameter(ParameterSetName = 'Credential', Mandatory)]
+        [String]$ClientId,
+        [Parameter(ParameterSetName = 'Login', Mandatory)]
+        [Parameter(ParameterSetName = 'Credential', Mandatory)]
+        [String]$RedirectUri
+    )
+
+    # Test if parameter set is or Login to create $Credential
+    Write-Debug "Parameter set is '$($PSCmdlet.ParameterSetName)'"
+    if ($PSCmdlet.ParameterSetName -eq 'Login') {
+        $Credential = [System.Management.Automation.PSCredential]::new($UserName, $SecurePassword)
+    }
+    # If set is Credential or Login get (re)assign $UserName and $Password
+    if ($PSCmdlet.ParameterSetName -in @('Login', 'Credential')) {
+        $UserName = $Credential.UserName
+        $Password = $Credential.GetNetworkCredential().Password
+        Write-Debug "`$UserName = '$UserName'"
+        Write-Debug "`$Password = '********'"
+    }
 
     if (-not (Test-Path -Path '.account.json')) {
         Throw "File '.account.json' not found. Please create this file with your Viessmann account details."
