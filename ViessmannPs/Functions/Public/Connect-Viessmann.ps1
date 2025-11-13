@@ -79,7 +79,7 @@ function Connect-Viessmann {
         
         # Use values from persisted configuration
         $UserName    = $script:ViessmannConfig.account.name
-        $Password    = $script:ViessmannConfig.account.password
+        $Password    = Unprotect-Text $script:ViessmannConfig.account.password
         $ClientId    = $script:ViessmannConfig.client.id
         $RedirectUri = $script:ViessmannConfig.client.uri
         Write-Debug "Using persisted information for user: $UserName"
@@ -88,10 +88,10 @@ function Connect-Viessmann {
     if ($Persist.IsPresent) {
         Write-Debug "Try to persist configuration to: $script:ViessmannConfigPath"
         # overwrite configuration object with template
-        $script:ViessmannConfig = $script:ViessmannConfigTemplate
+        $script:ViessmannConfig = $script:ViessmannConfigTemplate.psobject.Copy()
         # assign values
         $script:ViessmannConfig.account.name     = $UserName
-        $script:ViessmannConfig.account.password = $Password
+        $script:ViessmannConfig.account.password = Protect-Text $Password
         $script:ViessmannConfig.client.id        = $ClientId
         $script:ViessmannConfig.client.uri       = $RedirectUri
         # write object to viessmann config path
