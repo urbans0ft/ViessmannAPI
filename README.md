@@ -26,7 +26,7 @@ Configuration persisted to: C:\Users\<user>\.ViessmanPs\config.json
 OAuth information persisted to: C:\Users\<user>\.ViessmanPs\oauth.json
 ```
 
-Since the first connect was made with parameter `-Persis` subsequent calls won't need parameters:
+Since the first connect was made with parameter `-Persist` subsequent calls won't need parameters:
 
 ```powershell
 Connect-Viessmann
